@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Parametri Stampa 3D</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestione Parametri Stampa 3D</h1>
+        <form id="printForm">
+            <label for="material">Materiale:</label>
+            <select id="material" name="material">
+                <option value="PLA">PLA</option>
+                <option value="ABS">ABS</option>
+                <option value="PETG">PETG</option>
+                <option value="TPU">TPU</option>
+                <option value="Nylon">Nylon</option>
+                <option value="ASA">ASA</option>
+                <option value="PC">Policarbonato (PC)</option>
+                <option value="HIPS">HIPS</option>
+                <option value="PVA">PVA</option>
+                <option value="PP">Polipropilene (PP)</option>
+                <option value="PEEK">PEEK</option>
+                <option value="TPE">TPE</option>
+                <option value="Wood">Legno</option>
+                <option value="Metal">Metallo</option>
+                <option value="Carbon Fiber">Fibra di Carbonio</option>
+                <option value="Glow-in-the-Dark">Glow-in-the-Dark</option>
+                <option value="Flex">Flex</option>
+                <option value="Conductive">Conduttivo</option>
+                <option value="Ceramic">Ceramica</option>
+            </select>
+
+            <label for="layerHeight">Altezza dello strato (mm):</label>
+            <input type="number" id="layerHeight" name="layerHeight" step="0.01" required>
+
+            <label for="printSpeed">Velocità di stampa (mm/s):</label>
+            <input type="number" id="printSpeed" name="printSpeed" required>
+
+            <label for="infill">Riempimento (%):</label>
+            <input type="number" id="infill" name="infill" min="0" max="100" required>
+
+            <label for="retraction">Ritrazione (mm):</label>
+            <input type="number" id="retraction" name="retraction" step="0.1" required>
+
+            <label for="retractionSpeed">Velocità di ritrazione (mm/s):</label>
+            <input type="number" id="retractionSpeed" name="retractionSpeed" required>
+
+            <button type="submit">Salva Parametri</button>
+        </form>
+
+        <div class="actions">
+            <button id="exportButton">Esporta Dati</button>
+            <button id="importButton">Importa Dati</button>
+            <input type="file" id="importFile" accept=".json" style="display: none;">
+        </div>
+
+        <h2>Parametri Salvati:</h2>
+        <table id="savedParameters">
+            <thead>
+                <tr>
+                    <th>Materiale</th>
+                    <th>Altezza Strato (mm)</th>
+                    <th>Velocità Stampa (mm/s)</th>
+                    <th>Riempimento (%)</th>
+                    <th>Temperatura (°C)</th>
+                    <th>Temperatura Piatto (°C)</th>
+                    <th>Raffreddamento (%)</th>
+                    <th>Ritrazione (mm)</th>
+                    <th>Velocità Ritrazione (mm/s)</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- I dati verranno aggiunti qui dinamicamente -->
+            </tbody>
+        </table>
+
+        <!-- Area per visualizzare il file JSON su Android -->
+        <div id="jsonOutput" class="json-output" style="display: none;">
+            <h3>File JSON:</h3>
+            <textarea id="jsonText" readonly></textarea>
+            <button onclick="copyJson()">Copia JSON</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 Mario Scioli. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
