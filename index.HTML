@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3DPrintManager - Gestione Materiali Stampabili</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="bg-primary text-white text-center py-4">
+        <h1>3DPrintManager</h1>
+        <p class="lead">Parametri di stampa dei vari materiali stampabili con 3D - By Mario Scioli</p>
+    </header>
+
+    <div class="container my-5">
+        <div class="text-center mb-4">
+            <button id="addBtn" class="btn btn-success">Aggiungi Materiale</button>
+            <button id="searchBtn" class="btn btn-primary">Cerca Materiale</button>
+            <button id="printBtn" class="btn btn-secondary">Stampa Lista</button>
+            <button id="exportBtn" class="btn btn-info">Esporta</button>
+            <input type="file" id="importFile" style="display: none;" accept=".json">
+            <button id="importBtn" class="btn btn-warning">Importa</button>
+        </div>
+        <table id="materialTable" class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Temperatura Ugello (°C)</th>
+                    <th>Temperatura Piatto (°C)</th>
+                    <th>Raffreddamento</th>
+                    <th>Ritrazione (mm)</th>
+                    <th>Velocità Ritrazione (mm/s)</th>
+                    <th>Bobine Disponibili</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 Tutti i diritti riservati.</p>
+        <p>Creato da Mario Scioli</p>
+    </footer>
+
+    <div class="modal fade" id="materialModal" tabindex="-1" aria-labelledby="materialModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="materialModalLabel">Aggiungi/Modifica Materiale</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="materialForm">
+                        <div class="mb-3">
+                            <label for="materialName" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="materialName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nozzleTemp" class="form-label">Temperatura Ugello (°C)</label>
+                            <input type="number" class="form-control" id="nozzleTemp" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bedTemp" class="form-label">Temperatura Piatto (°C)</label>
+                            <input type="number" class="form-control" id="bedTemp" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cooling" class="form-label">Raffreddamento</label>
+                            <select class="form-control" id="cooling" required>
+                                <option value="Si">Si</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="shrinkage" class="form-label">Ritrazione (mm)</label>
+                            <input type="number" class="form-control" id="shrinkage" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="retractionSpeed" class="form-label">Velocità Ritrazione (mm/s)</label>
+                            <input type="number" class="form-control" id="retractionSpeed" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Bobine Disponibili</label>
+                            <input type="text" class="form-control" id="quantity" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                    <button type="button" class="btn btn-primary" id="saveMaterialBtn">Salva</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
